@@ -32,8 +32,8 @@ A centralized monitoring approach is deployed to track both hardware and contain
 
 ## 📸 Dashboards & Status
 *(Add screenshots of your Grafana Dashboard and Uptime Kuma Public Status Page here)*
-* [Screenshot: Grafana Infrastructure Dashboard]
-* [Screenshot: Uptime Kuma Public Status]
+* ![alt text](./assets/grafana-dash.png)
+* ![alt text](./assets/uptime-kuma.png)
 
 ## 🚀 Future Roadmap
 - [ ] Implement CI/CD Pipeline using GitHub Actions and Self-Hosted Runners for automated application deployment.
