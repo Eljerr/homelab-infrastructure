@@ -31,7 +31,6 @@ A centralized monitoring approach is deployed to track both hardware and contain
 * **cAdvisor:** Provides real-time resource usage and performance characteristics of running Docker containers.
 
 ## 📸 Dashboards & Status
-*(Add screenshots of your Grafana Dashboard and Uptime Kuma Public Status Page here)*
 * ![Arsitektur](./assets/arsitektur.gif)
 * ![Grafana](./assets/grafana-dash.png)
 * ![Uptime Kuma](./assets/uptime-kuma.png)
