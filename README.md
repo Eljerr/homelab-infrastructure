@@ -1,4 +1,4 @@
-# Enterprise-Grade Homelab: Zero-Trust Gateway & Full-Stack Monitoring
+# Zero-Trust Gateway & Full-Stack Monitoring
 
 ## 📌 Executive Summary
 This project demonstrates the design and implementation of a scalable, micro-segmented homelab infrastructure. The architecture focuses on high availability, strict security measures, and efficient power consumption by utilizing an Amlogic Single-Board Computer (AKARI AX810, Amlogic S905X4) as an edge gateway and a Proxmox VE server for application hosting.
