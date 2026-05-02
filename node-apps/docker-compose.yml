@@ -1,4 +1,13 @@
 services:
+  api-test:
+    build: ./apps/api-test
+    container_name: api-test
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    env_file:
+      - ./apps/api-test/.env
+
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
