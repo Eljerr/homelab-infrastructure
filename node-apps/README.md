@@ -1,28 +1,29 @@
 # 🖥️ App Server
 
-## 📌 Server Info
+## 📌 System Identity
 | Key | Value |
-|-----|-------|
-| **Hostname** | app-server |
-| **IP** | 192.168.x.x |
-| **OS** | Ubuntu Server xx.xx |
-| **Role** | Application Server |
-| **Location** | /opt/apps/node-apps |
+| :--- | :--- |
+| **Hostname** | app-server-xlc |
+| **IP Address** | 192.168.x.x |
+| **OS** | Ubuntu Server 22.04 LTS |
+| **Main Path** | `/opt/apps/node-apps` |
 
 ---
 
-## 🏗️ Stack
-| Service | Image | Port | Fungsi |
-|---------|-------|------|--------|
-| node-exporter | prom/node-exporter | 9100 | Metrics sistem host |
-| cadvisor | gcr.io/cadvisor/cadvisor | 8080 | Metrics Docker container |
+## 🏗️ Monitoring Stack
+| Service | Image | Port | Access | Fungsi |
+| :--- | :--- | :--- | :--- | :--- |
+| **Node Exporter** | `prom/node-exporter` | 9100 | Local | Metrics OS (CPU, RAM, Disk) |
+| **cAdvisor** | `gcr.io/cadvisor` | 8080 | Local | Metrics Container Runtime |
 
 ---
 
-## 🔒 Security
-- [ ] Root login SSH disabled
-- [ ] SSH Key only
-- [ ] UFW aktif
-- [ ] User deploy tanpa sudo
+## 🔒 Security & Hardening
+- [ ] **SSH:** Root login disabled & Port hardening.
+- [ ] **Auth:** SSH Key-based authentication only.
+- [ ] **Firewall:** UFW active 
+- [ ] **Access:** User `deploy` (Non-sudoer).
+- [ ] **Docker:** User `deploy` masuk ke group `docker` (Rootless execution).
 
+---
 
