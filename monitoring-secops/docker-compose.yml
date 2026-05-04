@@ -3,12 +3,10 @@ services:
     image: prom/prometheus:latest
     container_name: prometheus
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ./apps/prometheus:/etc/prometheus
     ports:
       - "9090:9090"
     restart: unless-stopped
-    env_file:
-      - ./.env
 
   grafana:
     image: grafana/grafana:latest
