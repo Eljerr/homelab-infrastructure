@@ -5,8 +5,6 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
-    env_file:
-      - ./apps/api-test/.env
 
   node-exporter:
     image: prom/node-exporter:latest
