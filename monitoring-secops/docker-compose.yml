@@ -5,14 +5,14 @@ services:
     volumes:
       - ./apps/prometheus:/etc/prometheus
     ports:
-      - "9090:9090"
+      - "${IP_STB}:${PORT_PROMETHEUS}:9090"
     restart: unless-stopped
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - "3000:3000"
+      - "${IP_STB}:${PORT_GRAFANA}:3000"
     restart: unless-stopped
     depends_on:
       - prometheus

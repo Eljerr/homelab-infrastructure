@@ -25,13 +25,13 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
     ports:
-      - "9100:9100"
+      - "${IP_SECOPS}:${PORT_EXPORTER}:9100"
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     ports:
-     - "8080:8080"
+     - "${IP_SECOPS}:${PORT_CADVISOR}:8080"
     volumes:
      - /:/rootfs:ro
      - /var/run:/var/run:ro
@@ -53,4 +53,4 @@ services:
     image: cloudflare/cloudflared:latest
     container_name : cloudflared
     restart: unless-stopped
-    command: tunnel run --token ...
+    command: tunnel run --token ${TOKEN}
