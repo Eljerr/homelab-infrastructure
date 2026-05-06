@@ -1,32 +1,29 @@
-# 🛡️ SecOps Monitoring Server
+# Monitoring & SecOps Server (`sec-ops`)
 
-## 📌 System Identity
-| Key | Value |
-| :--- | :--- |
-| **Hostname** | secops-xlc |
-| **IP Address** | 192.168.x.x |
-| **OS** | Ubuntu Server 22.04 LTS |
-| **Environment** | Production / Monitoring |
-| **Main Path** | `/opt/apps/monitoring-secops` |
+## 📌 Overview
+This directory contains the observability stack configurations, including Prometheus, Grafana, and related exporters to monitor the health and performance of the entire homelab infrastructure.
 
----
+## 🖥️ Environment Details
+- **Hostname:** `sec-ops`
+- **Environment:** Proxmox LXC (Linux Container)
+- **Deployment Path:** `/opt/apps/monitoring-secops`
+- **Role:** Infrastructure Monitoring, Metrics Collection, and Security Operations
 
-## 🏗️ Monitoring Stack
-| Service | Image | Port | Access | Fungsi |
-| :--- | :--- | :--- | :--- | :--- |
-| **Prometheus** | `prom/prometheus` | 9090 | Internal | Data Aggregator & TSDB |
-| **Grafana** | `grafana/grafana` | 3000 | Public/Local | Visualisasi & Dashboard |
-| **Node Exporter** | `prom/node-exporter` | 9100 | Local | Metrics OS (CPU, RAM, Disk) |
-| **cAdvisor** | `gcr.io/cadvisor` | 8080 | Local | Metrics Container Runtime |
+## ⚙️ Features & Architecture
+- **Prometheus:** Acts as the central time-series database, scraping metrics from `node-exporter` (hardware/OS metrics) and `cadvisor` (container metrics) across all physical and virtual nodes.
+- **Grafana:** Visualizes the metrics scraped by Prometheus via rich, customizable dashboards.
+- **Centralized Alerting:** Configurable to send notifications to administrators in the event of downtime, resource exhaustion, or unusual network activity.
 
----
+## 🚀 How to Run/Deploy
+Since the repository is managed using sparse-checkout, this node only pulls this specific directory.
 
-## 🔒 Security & Hardening
-- [ ] **SSH:** Root login disabled & Port hardening.
-- [ ] **Auth:** SSH Key-based authentication only.
-- [ ] **Firewall:** UFW active (Hanya buka port 3000, 9090, 22).
-- [ ] **Access:** User `deploy` (Non-sudoer).
-- [ ] **Docker:** User `deploy` masuk ke group `docker` (Rootless execution).
+```bash
+# 1. Navigate to the deployment path
+cd /opt/apps/monitoring-secops
 
----
+# 2. Pull the latest repository changes
+git pull origin main
 
+# 3. Start or update the monitoring stack
+docker-compose up -d
+```

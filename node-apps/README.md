@@ -1,29 +1,29 @@
-# 🖥️ App Server
+# Application Server (`app-server`)
 
-## 📌 System Identity
-| Key | Value |
-| :--- | :--- |
-| **Hostname** | app-server-xlc |
-| **IP Address** | 192.168.x.x |
-| **OS** | Ubuntu Server 22.04 LTS |
-| **Main Path** | `/opt/apps/node-apps` |
+## 📌 Overview
+This directory contains the application-level workloads. All primary user-facing applications, APIs, and services are hosted within this specific environment.
 
----
+## 🖥️ Environment Details
+- **Hostname:** `app-server`
+- **Environment:** Proxmox LXC (Linux Container)
+- **Deployment Path:** `/opt/apps/node-apps`
+- **Role:** Application Hosting and Execution
 
-## 🏗️ Monitoring Stack
-| Service | Image | Port | Access | Fungsi |
-| :--- | :--- | :--- | :--- | :--- |
-| **Node Exporter** | `prom/node-exporter` | 9100 | Local | Metrics OS (CPU, RAM, Disk) |
-| **cAdvisor** | `gcr.io/cadvisor` | 8080 | Local | Metrics Container Runtime |
+## ⚙️ Features & Architecture
+- **Containerized Workloads:** All applications are managed via Docker and Docker Compose for easy deployment, versioning, and rollback.
+- **Stateless Design:** Services are designed to be stateless where possible, relying entirely on the isolated `db-server` for data persistence.
+- **Internal Routing & Security:** Services hosted here do not have public IP addresses or direct internet access. They are strictly routed and accessed through the `gateway-stb` reverse proxy.
 
----
+## 🚀 How to Run/Deploy
+Since the repository is managed using sparse-checkout, this node only pulls this specific directory.
 
-## 🔒 Security & Hardening
-- [ ] **SSH:** Root login disabled & Port hardening.
-- [ ] **Auth:** SSH Key-based authentication only.
-- [ ] **Firewall:** UFW active 
-- [ ] **Access:** User `deploy` (Non-sudoer).
-- [ ] **Docker:** User `deploy` masuk ke group `docker` (Rootless execution).
+```bash
+# 1. Navigate to the deployment path
+cd /opt/apps/node-apps
 
----
+# 2. Pull the latest repository changes
+git pull origin main
 
+# 3. Start or update the application workloads
+docker-compose up -d
+```
