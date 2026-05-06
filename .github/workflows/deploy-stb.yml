@@ -1,0 +1,26 @@
+name : Deploy to stb 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'gateway-stb/**'
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, tvbox]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: gateway-stb
+          sparse-checkout-cone-mode: true
+      
+      - name: Deploy
+        working-directory: ./gateway-stb
+        run: docker compose up -d --build --force-recreate --remove-orphans
+

@@ -1,3 +1,5 @@
+name: app-server
+
 on:
   push:
     branches:
@@ -5,9 +7,11 @@ on:
     paths:
       - 'node-apps/**'
 
+  workflow_dispatch:
+
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted, app-server]
 
     steps:
       - name: Checkout Code
